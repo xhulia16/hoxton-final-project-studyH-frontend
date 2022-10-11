@@ -1,42 +1,82 @@
-.App {
-  text-align: center;
+:root{
+   --main-color: rgb(57, 201, 57);
+   --on-hover: rgb(52, 180, 52);
+   --border: rgba(0, 0, 0, 0.322);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+*{
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+main{
+  display: grid;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  grid-template-areas: 
+  "header header ranking"
+  "main main ranking" 
+  ;
+  grid-template-rows: 10%;
+  grid-template-columns: 75%;
+  overflow: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+header{
+  grid-area: header;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content:space-between;
+  padding: 0px 20px;
+  align-content: center;
+  border-right: 1px solid var(--border);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header ul{
+  display: grid;
+  grid-auto-flow: column;
+  list-style: none;
+  gap: 20px;
 }
 
-button {
-  font-size: calc(10px + 2vmin);
+.exercises-section{
+  grid-area: main;
+  border: 1px solid var(--border);
+
+}
+
+.ranking-section{
+  grid-area: ranking;
+display: grid;
+text-align: center;
+justify-content: center;
+align-content: flex-start;
+gap: 40px; 
+padding: 20px 0;
+}
+
+.search{
+  height: 32px;
+  background-color:rgb(239,243,244);
+  border: none; 
+  border-radius: 12px;
+  text-align: center;
+  outline-color:  var(--main-color);
+}
+
+.search:focus {
+  background-color: white;
+  
+}
+
+button{
+  background-color: var(--main-color);
+  border: none;
+  padding: 0px 5px;
+  border-radius: 2px;
+}
+
+button:hover{
+  background-color: var(--on-hover);
 }
