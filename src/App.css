@@ -139,3 +139,11 @@ ul {
   border-top: var(--border);
   width: 200px;
 }
+
+::-webkit-scrollbar{
+  width:4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+}
