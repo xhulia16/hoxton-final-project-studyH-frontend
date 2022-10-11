@@ -1,34 +1,68 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import { Header } from "./components/Header";
+import { ClassMates} from "./components/Classmates";
+import { Ranking } from "./components/Rankings";
 
 function App() {
-
-
   return (
     <div className="App">
       <main>
-        <header>
-          <h3>StudyH</h3>
-          <ul>
-            <li>LogIn</li>
-            <button>DMS</button>
-          </ul>
-        </header>
+        <Header />
         <section className="exercises-section">
-          <h4>Exercises section</h4>
+          <form className="question">
+            <div className="teacher-info">
+              <img
+                className="profile-pic"
+                src="https://www.looper.com/img/gallery/why-owl-house-fans-love-eda-so-much/l-intro-1649367923.jpg"
+              ></img>
+              <p>Teacher's name</p>
+            </div>
+            <p>Question of the exercise goes here</p>
+            <label>
+              <input
+                type="radio"
+                name="answer"
+                value="example"
+                className="custom"
+              ></input>
+              <span>Alternative</span>
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="answer"
+                value="example"
+                className="custom"
+              ></input>
+              <span>Alternative</span>
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="answer"
+                value="example"
+                className="custom"
+              ></input>
+              <span>Alternative</span>
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="answer"
+                value="example"
+                className="custom"
+              ></input>
+              <span>Alternative</span>
+            </label>
+            <button>Submit</button>
+          </form>
         </section>
-        <section className="ranking-section">
-          <input className="search" placeholder="Search Question"></input>
-          <ul>
-          students ranking
-          <li>Student1 bananan scores</li>
-          <li>Student2 bananan scores</li>
-          <li>Student3 bananan scores</li>
-          </ul>
-        </section>
+        <Ranking />
+        <ClassMates/>
       </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
