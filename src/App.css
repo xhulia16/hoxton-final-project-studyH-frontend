@@ -8,6 +8,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 main {
@@ -41,9 +42,12 @@ header ul {
   grid-area: main;
   border: var(--border);
   display: grid;
-  grid-auto-flow: column;
+  grid-auto-flow: row;
   justify-content: center;
   padding-top: 50px;
+  gap: 20px; 
+  height: 515px;
+  overflow-y: scroll;
 }
 
 .ranking-section {
@@ -115,17 +119,14 @@ ul {
 .question {
   border: var(--border);
   display: grid;
-  width: 400px;
+  width: 450px;
+  height: max-content;
   gap: 10px;
   padding: 10px;
   text-align: center;
-}
-
-.exercises-section {
-  display: grid;
-  justify-items: center;
   align-content: baseline;
 }
+
 
 .profile-pic {
   width: 30px;
