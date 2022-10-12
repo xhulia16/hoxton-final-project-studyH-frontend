@@ -3,7 +3,7 @@ export function Header(){
         <header>
           <h3>StudyH</h3>
           <ul>
-            <li>LogIn</li>
+            <li>LogOut</li>
             <li>DM</li>
           </ul>
         </header>

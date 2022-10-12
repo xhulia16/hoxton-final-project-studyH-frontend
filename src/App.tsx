@@ -3,108 +3,22 @@ import "./App.css";
 import { Header } from "./components/Header";
 import { ClassMates} from "./components/Classmates";
 import { Ranking } from "./components/Rankings";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { MainPage } from "./pages/MainPage";
+import { PageNotFound } from "./pages/PageNotFound";
+import { LogIn } from "./pages/LogInPage";
 
 function App() {
   return (
     <div className="App">
       <main>
-        <Header />
-        <section className="exercises-section">
-          <form className="question">
-            <div className="teacher-info">
-              <img
-                className="profile-pic"
-                src="https://www.looper.com/img/gallery/why-owl-house-fans-love-eda-so-much/l-intro-1649367923.jpg"
-              ></img>
-              <p>Teacher's name</p>
-            </div>
-            <p>Question of the exercise goes here</p>
-            <label>
-              <input
-                type="radio"
-                name="answer"
-                value="example"
-                className="custom"
-              ></input>
-              <span>Alternative</span>
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="answer"
-                value="example"
-                className="custom"
-              ></input>
-              <span>Alternative</span>
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="answer"
-                value="example"
-                className="custom"
-              ></input>
-              <span>Alternative</span>
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="answer"
-                value="example"
-                className="custom"
-              ></input>
-              <span>Alternative</span>
-            </label>
-            <button>Submit</button>
-          </form>
-          <form className="question">
-            <div className="teacher-info">
-              <img
-                className="profile-pic"
-                src="https://www.looper.com/img/gallery/why-owl-house-fans-love-eda-so-much/l-intro-1649367923.jpg"
-              ></img>
-              <p>Teacher's name</p>
-            </div>
-            <p>Question of the exercise goes here</p>
-            <label>
-              <input
-                type="radio"
-                name="answer"
-                value="example"
-                className="custom"
-              ></input>
-              <span>Alternative</span>
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="answer"
-                value="example"
-                className="custom"
-              ></input>
-              <span>Alternative</span>
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="answer"
-                value="example"
-                className="custom"
-              ></input>
-              <span>Alternative</span>
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="answer"
-                value="example"
-                className="custom"
-              ></input>
-              <span>Alternative</span>
-            </label>
-            <button>Submit</button>
-          </form>
-        </section>
+        <Header/>
+        <Routes>
+        <Route index element={<Navigate to='/home' />} />
+        <Route path='/home' element={<MainPage/>} />
+        <Route path='/log-in' element={<LogIn/>} />
+        <Route path='*' element={<PageNotFound/>} />
+        </Routes>
         <Ranking />
         <ClassMates/>
       </main>

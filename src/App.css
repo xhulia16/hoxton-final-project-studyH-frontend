@@ -30,7 +30,7 @@ header {
   justify-content: space-between;
   padding: 0px 20px;
   align-content: center;
-  border-right: var(--border);
+  border-bottom: var(--border);
 }
 
 header ul {
@@ -41,7 +41,6 @@ header ul {
 
 .exercises-section {
   grid-area: main;
-  border: var(--border);
   display: grid;
   grid-auto-flow: row;
   justify-content: center;
@@ -59,6 +58,7 @@ header ul {
   align-content: flex-start;
   gap: 40px;
   padding: 20px 0;
+  border-left: var(--border);
 }
 
 .ranking-section ul{
@@ -188,4 +188,10 @@ ul {
 
 ::-webkit-scrollbar-thumb {
   background: var(--main-color);
+}
+
+/* log in page */
+.logIn-page{
+  border: var(--border);
+  background-color: blue;
 }
