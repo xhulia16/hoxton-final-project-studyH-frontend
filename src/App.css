@@ -2,6 +2,7 @@
   --main-color: rgb(57, 201, 57);
   --on-hover: rgb(52, 180, 52);
   --border: 1px solid rgba(0, 0, 0, 0.322);
+  --search-color: rgb(239, 243, 244);
 }
 
 * {
@@ -60,9 +61,35 @@ header ul {
   padding: 20px 0;
 }
 
+.ranking-section ul{
+  background-color: var(--search-color);
+  width: 200px;
+  border-radius: 7px;
+  padding: 5px;
+}
+
+.ranking-section h3{
+  font-weight: 400;
+  padding-bottom: 20px;
+  padding-top: 5px;
+}
+
+.pupil-rank{
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: left;
+  gap:5px;
+  padding-bottom: 5px;
+}
+
+.ranking{
+  font-size: 20px;
+}
+
 .classmates-list {
-  background-color: rgb(241, 245, 247);
-  padding-top: 20px;
+
+  padding-top: 24px;
   grid-area: classmates;
   border: var(--border);
   width: 200px;
@@ -73,9 +100,24 @@ header ul {
   height: 100%;
 }
 
+.classmates-list p{
+  text-align: center;
+}
+
+.classmates-list li{
+  padding-top: 5px;
+  padding-left: 5px;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: left;
+  align-items: center;
+  gap: 5px;
+  font-size: 15px;
+}
+
 .search {
   height: 32px;
-  background-color: rgb(239, 243, 244);
+  background-color:  var(--search-color);
   border: none;
   border-radius: 12px;
   text-align: center;
