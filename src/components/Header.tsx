@@ -1,12 +1,18 @@
 
 
-export function Header(){
+export function Header({currentUser, logOutUser}){
     return(
         <header>
           <h3>StudyH</h3>
           <ul>
-            <li>LogOut</li>
-            <li>DM</li>
+            {currentUser? <>
+              <li><button onClick={logOutUser}>LogOut</button></li>
+              <li><button>Dm</button></li>
+            </>
+             :
+             null     
+            }
+            
           </ul>
         </header>
     )

@@ -30,8 +30,12 @@ header {
   grid-auto-flow: column;
   justify-content: space-around;
   gap: 750px;
-  align-content: center;
+  align-items: center;
   border-bottom: var(--border);
+}
+
+header h3{
+  font-size: 28px;
 }
 
 header ul {
