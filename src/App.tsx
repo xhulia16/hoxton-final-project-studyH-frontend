@@ -9,9 +9,11 @@ import { PageNotFound } from "./pages/PageNotFound";
 import { LogIn } from "./pages/LogInPage";
 
 function App() {
+  const [currentUser, setCurrentUser]=useState()
   return (
     <div className="App">
       <main>
+        
         <Header/>
         <Routes>
         <Route index element={<Navigate to='/home' />} />
@@ -19,8 +21,13 @@ function App() {
         <Route path='/log-in' element={<LogIn/>} />
         <Route path='*' element={<PageNotFound/>} />
         </Routes>
-        <Ranking />
+        {currentUser? <>
+          <Ranking />
         <ClassMates/>
+        </>:
+        null
+         }
+       
       </main>
     </div>
   );
