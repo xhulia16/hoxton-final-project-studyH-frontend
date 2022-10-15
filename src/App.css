@@ -10,6 +10,7 @@
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
+  text-align: center;
 }
 
 main {
@@ -58,7 +59,7 @@ header ul {
 .ranking-section {
   grid-area: ranking;
   display: grid;
-  text-align: center;
+
   justify-content: center;
   align-content: flex-start;
   gap: 40px;
@@ -104,9 +105,7 @@ header ul {
   height: 100%;
 }
 
-.classmates-list p {
-  text-align: center;
-}
+
 
 .classmates-list li {
   padding-top: 5px;
@@ -124,7 +123,6 @@ header ul {
   background-color: var(--search-color);
   border: none;
   border-radius: 12px;
-  text-align: center;
   outline-color: var(--main-color);
 }
 
@@ -137,7 +135,6 @@ button {
   border: none;
   padding: 5px 5px;
   border-radius: 4px;
-  text-align: center;
 }
 
 button:hover {
@@ -159,7 +156,7 @@ ul {
 .question label {
   display: grid;
   border: var(--border);
-  text-align: center;
+
 }
 
 .question {
@@ -169,8 +166,38 @@ ul {
   height: max-content;
   gap: 10px;
   padding: 10px;
-  text-align: center;
   align-content: baseline;
+}
+
+.teacher{
+  border: var(--border);
+  width: 450px;
+  gap:10px;
+  padding:10px;
+  height: max-content;
+  display: grid;
+  grid-auto-flow: row;
+}
+
+.teacher input{
+  width: 100%;
+  height:20px;
+outline: 1px solid #ccc; 
+border: 1px solid #ccc; 
+border-radius: 2px;
+
+}
+
+textarea{
+  width: 100%;
+  height: 100px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #ffffff;
+  resize: none;
+  outline-color: var(--main-color);
 }
 
 .profile-pic {
@@ -251,10 +278,11 @@ ul {
   padding: 3px;
   border: 1px solid var(--main-color);
   border-radius: 5px;
-  text-align: center;
 }
 
 .logIn-question input[type="radio"]:checked + span {
   background-color: var(--main-color);
   border-radius: 8px;
 }
+
+

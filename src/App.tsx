@@ -7,23 +7,25 @@ import { Navigate, Route, Routes, useNavigate} from "react-router-dom";
 import { MainPage } from "./pages/MainPage";
 import { PageNotFound } from "./pages/PageNotFound";
 import { LogIn } from "./pages/LogInPage";
-import { Teacher } from "./types";
+import { Pupil, Teacher } from "./types";
 
 function App() {
-  const [currentUser, setCurrentUser]=useState<Teacher|null>(null)
-
+  const [currentUser, setCurrentUser]=useState<Teacher|Pupil|null>(null)
+  const [userType, setUserType]=useState<String>("")
   
   let navigate= useNavigate()
 
   function logInUser(data: any){
     setCurrentUser(data.user)
+    setUserType(localStorage.user)
     localStorage.token=data.token
-    // navigate('/home')
+    navigate("home")
   }
 
   function logOutUser(){
     setCurrentUser(null)
     localStorage.removeItem('token')
+    localStorage.removeItem('user')
     navigate("/log-in")
   }
 
@@ -71,7 +73,7 @@ function App() {
         <Header currentUser={currentUser} logOutUser={logOutUser}/>
         <Routes>
         <Route index element={<Navigate to='/home' />} />
-        <Route path='/home' element={<MainPage/>} />
+        <Route path='/home' element={<MainPage userType={userType}/>} />
         <Route path='/log-in' element={<LogIn logInUser={logInUser}/>} />
         <Route path='*' element={<PageNotFound/>} />
         </Routes>

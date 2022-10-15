@@ -1,5 +1,6 @@
 export function LogIn({logInUser}) {
   return (
+
     <div className="logIn-page">
       <form
         onSubmit={(event) => {
@@ -9,7 +10,7 @@ export function LogIn({logInUser}) {
             email: event.target.email.value,
             password: event.target.password.value
           };
-          console.log(user);
+          console.log(event.target.answer.value);
 
           if (event.target.answer.value === "teacher") {
              fetch(`http://localhost:5000/sign-in/teacher`, {
@@ -67,7 +68,7 @@ export function LogIn({logInUser}) {
             <input
               type="radio"
               name="answer"
-              value="teacher"
+              value="pupil"
               className="custom"
             ></input>
             <span>Pupil</span>
