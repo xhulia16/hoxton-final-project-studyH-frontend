@@ -73,7 +73,7 @@ function App() {
         <Header currentUser={currentUser} logOutUser={logOutUser}/>
         <Routes>
         <Route index element={<Navigate to='/home' />} />
-        <Route path='/home' element={<MainPage userType={userType}/>} />
+        <Route path='/home' element={<MainPage userType={userType} currentUser={currentUser}/>} />
         <Route path='/log-in' element={<LogIn logInUser={logInUser}/>} />
         <Route path='*' element={<PageNotFound/>} />
         </Routes>
