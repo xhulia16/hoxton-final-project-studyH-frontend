@@ -12,6 +12,17 @@ import { Pupil, Teacher } from "./types";
 function App() {
   const [currentUser, setCurrentUser]=useState<Teacher|Pupil|null>(null)
   const [userType, setUserType]=useState<String>("")
+  const [userClass, setUserClass]=useState()
+
+  useEffect(()=>{
+    if(currentUser){
+      fetch(`http://localhost:5000/class/${currentUser.classId}`)
+      .then(resp=>resp.json())
+      .then(data=>setUserClass(data))
+    }
+  },[])
+
+  window.userClass=userClass
   
   let navigate= useNavigate()
 
@@ -19,7 +30,6 @@ function App() {
     setCurrentUser(data.user)
     setUserType(localStorage.user)
     localStorage.token=data.token
-    navigate("home")
   }
 
   function logOutUser(){

@@ -1,9 +1,11 @@
+
 export type Teacher = {
     id: number,
     name: String,
     email: String,
     password: String,
     image: String
+    classId: number
 }
 
 export type Pupil = {
@@ -13,6 +15,7 @@ export type Pupil = {
     password: String
     image: String
     score: number
+    classId: number
 }
 
 

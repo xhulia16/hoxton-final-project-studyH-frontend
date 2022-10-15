@@ -1,4 +1,5 @@
-import { Pupil, Teacher } from "../types"
+import { useEffect, useState } from "react"
+import { Exercise, Pupil, Teacher } from "../types"
 
 type Props={
   userType: String
@@ -6,6 +7,7 @@ type Props={
 }
 
 export function MainPage({userType, currentUser}:Props){
+
   if(currentUser===null){
     return(
       <h1>Loading...</h1>
