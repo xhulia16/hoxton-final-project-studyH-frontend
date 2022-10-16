@@ -59,7 +59,14 @@ export function MainPage({ userType, currentUser, exercises }) {
         ) : (
           <>
             {exercises.map((item) => (
-              <form className="question">
+              <form className="question"onSubmit={
+                (event)=>{
+                  event.preventDefault()
+                  console.log(event.target.name.value)
+
+                }
+                
+              }>
                 <div className="teacher-info">
                   <img
                     className="profile-pic"
@@ -75,7 +82,7 @@ export function MainPage({ userType, currentUser, exercises }) {
                     item.alternative3,
                     item.alternative4,
                   ]}
-                  name={item.alternative1}
+                  name="name"
                 />
                 <button>Submit</button>
               </form>
