@@ -13,6 +13,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState<Teacher | Pupil | null>(null);
   const [userType, setUserType] = useState<String>("");
   const [exercises, setExercises] = useState([]);
+  const [pupils, setPupils] = useState([]);
 
   window.currentUser = currentUser;
 
@@ -68,10 +69,16 @@ function App() {
     if (currentUser) {
       fetch(`http://localhost:5000/class/${currentUser.classId}`)
         .then((resp) => resp.json())
-        .then(({exercises})=>setExercises(exercises))
+        .then((data) => {
+          const { exercises, pupils } = data;
+          setExercises(exercises);
+          setPupils(pupils);
+        });
     }
   }, [currentUser]);
+
   console.log(exercises);
+  console.log(pupils);
 
   return (
     <div className="App">
@@ -95,7 +102,7 @@ function App() {
         {currentUser ? (
           <>
             <Ranking />
-            <ClassMates />
+            <ClassMates pupils={pupils}/>
           </>
         ) : null}
       </main>

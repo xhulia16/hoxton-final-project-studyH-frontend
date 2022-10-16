@@ -10,8 +10,8 @@ export function Exercise({question, options, name }: Props){
         {question}
         {options.map(option=>(
          <label>
-         <input type="radio" name={name} value={option}></input>
-         {option}
+         <input  type="radio" name={name} value={option}></input>
+         <span>{option}</span>
         </label>
         ))}
                
