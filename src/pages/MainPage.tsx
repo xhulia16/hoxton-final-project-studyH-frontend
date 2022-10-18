@@ -19,6 +19,7 @@ export function MainPage({ userType, currentUser, exercises, setExercises}: Prop
         ) : (
           <PupilExercises setExercises={setExercises} currentUser={currentUser} exercises={exercises} />
         )}
+        <h3>No more exercises to solve yet...</h3>
       </section>
     </>
   );

@@ -290,3 +290,67 @@ a{
   text-decoration: none;
 }
 
+.solved-exercises{
+  background-color: #f7aeba;
+  width: 65vw;
+  display: grid;
+  justify-content: center;
+  align-content: flex-start;
+  gap: 30px;
+  overflow-y: scroll;
+}
+
+.single-exercise{
+  display: grid;
+  grid-auto-flow: column;
+ background-color: white;
+  justify-items: center;
+  align-items: center;
+  width: 45vw;
+  border: var(--border);
+  padding: 20px 0px;
+
+}
+
+.single-exercise input{
+  outline: var(--main-color);
+  height: 20px;
+  width: 200px;
+  text-align: left;
+}
+
+.single-exercise ul{
+  background-color: greenyellow;
+  border: var(--border);
+  width: 100%;
+  height: 100%;
+}
+
+.exercise-details{
+display: grid;
+justify-items: left;
+gap: 10px;
+}
+
+.exercise-details p{
+  width: 200px;
+  height: fit-content;
+  text-align: left;
+}
+
+.comment{
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: left;
+  gap:5px;
+  align-items: center;
+}
+
+.comment img{
+  width: 20px;
+  height:20px;
+}
+
+.comment p{
+
+}

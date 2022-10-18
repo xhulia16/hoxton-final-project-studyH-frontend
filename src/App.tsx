@@ -8,7 +8,7 @@ import { MainPage } from "./pages/MainPage";
 import { PageNotFound } from "./pages/PageNotFound";
 import { LogIn } from "./pages/LogInPage";
 import { Pupil, Teacher } from "./types";
-import { SingleExercise } from "./pages/SingleExercise";
+import { SolvedExercises } from "./pages/SolvedExercises";
 
 function App() {
   const [currentUser, setCurrentUser] = useState<Teacher | Pupil | null>(null);
@@ -104,7 +104,7 @@ function App() {
                   />
                 }
               />
-              <Route path="exercise/:itemId" element={<SingleExercise/>}/>
+              <Route path="/solved-exercises" element={<SolvedExercises/>}/>
             </>
           ) : (
             <>

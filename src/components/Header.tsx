@@ -9,8 +9,11 @@ export function Header({currentUser, logOutUser}){
           </Link>
           <ul>
             {currentUser? <>
-              <li><button onClick={logOutUser}>LogOut</button></li>
+            <Link to="/solved-exercises">
+              <li><button>See Answers</button></li>
+              </Link>
               <li><button>Dm</button></li>
+              <li><button onClick={logOutUser}>LogOut</button></li>
             </>
              :
              null     

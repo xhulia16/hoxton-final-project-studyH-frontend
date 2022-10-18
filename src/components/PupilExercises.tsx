@@ -53,7 +53,7 @@ export function PupilExercises({ exercises, currentUser, setExercises }) {
             ]}
             name="name"
           />
-          <button>Submit</button>
+          <button type="submit">Submit</button>
         </form>
       ))}
     </>
