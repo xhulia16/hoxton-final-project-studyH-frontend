@@ -1,35 +1,42 @@
 import { Exercises } from "../types";
 import { Exercise } from "../components/Exercise";
-import { Link } from "react-router-dom";
 import { useRef } from "react";
-type Props={
-  exercises: Exercises
-}
+type Props = {
+  exercises: Exercises;
+};
 
-export function PupilExercises({ exercises }) {
+export function PupilExercises({ exercises, currentUser, setExercises }) {
   const ref = useRef(null);
 
   if (exercises === null) {
     return <h1>Loading...</h1>;
   }
 
-
-
   return (
     <>
       {exercises.reverse().map((item) => (
-        <form 
+        <form
           className="question"
           onSubmit={(event) => {
             event.preventDefault();
-            console.log(event.target.name.value)
+            console.log(event.target.name.value);
 
-            const button=document.querySelector(`.${item.alternative1}`)
-            if(button){
-              button.disabled=true;
-            }
-            
-           
+            fetch("http://localhost:5000/answers", {
+              method: "POST",
+              headers: {
+                "Content-type": "Application/json",
+              },
+              body: JSON.stringify({
+                answer: event.target.name.value,
+                pupilId: currentUser.id,
+                exerciseId: item.id,
+              }),
+            })
+              .then((resp) => resp.json())
+              .then((data) => {
+                const { exercises } = data;
+                setExercises(exercises);
+              });
           }}
         >
           <div className="teacher-info">
@@ -46,17 +53,7 @@ export function PupilExercises({ exercises }) {
             ]}
             name="name"
           />
-          {/* {item.answered? 
-          <>
-          <button disabled={true}>Submit</button>
-          <Link to={`/exercise/${item.id}`}>
-          <h2>See results</h2>
-          </Link>
-          </>
-          : 
-         
-          } */}
-           <button className={item.alternative1}>Submit</button>
+          <button>Submit</button>
         </form>
       ))}
     </>

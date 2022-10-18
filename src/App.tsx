@@ -69,13 +69,16 @@ function App() {
 
   useEffect(() => {
     if (currentUser) {
-      fetch(`http://localhost:5000/class/${currentUser.classId}`)
+      if(userType==="pupil"){
+        fetch(`http://localhost:5000/class/${currentUser.id}`)
         .then((resp) => resp.json())
         .then((data) => {
           const { exercises, pupils } = data;
           setExercises(exercises);
           setPupils(pupils);
         });
+      }
+      
     }
   }, [currentUser]);
 

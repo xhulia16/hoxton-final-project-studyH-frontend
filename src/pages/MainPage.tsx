@@ -17,7 +17,7 @@ export function MainPage({ userType, currentUser, exercises, setExercises}: Prop
         {userType === "teacher" ? (
           <CreateExercise currentUser={currentUser} />
         ) : (
-          <PupilExercises setExercises={setExercises} exercises={exercises} />
+          <PupilExercises setExercises={setExercises} currentUser={currentUser} exercises={exercises} />
         )}
       </section>
     </>
