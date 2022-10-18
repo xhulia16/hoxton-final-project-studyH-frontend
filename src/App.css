@@ -291,13 +291,14 @@ a{
 }
 
 .solved-exercises{
-  background-color: #f7aeba;
+
   width: 65vw;
   display: grid;
   justify-content: center;
   align-content: flex-start;
   gap: 30px;
   overflow-y: scroll;
+  height: 520px;
 }
 
 .single-exercise{
@@ -308,7 +309,8 @@ a{
   align-items: center;
   width: 45vw;
   border: var(--border);
-  padding: 20px 0px;
+  padding: 20px;
+  height: 200px;
 
 }
 
@@ -317,19 +319,22 @@ a{
   height: 20px;
   width: 200px;
   text-align: left;
+  border: var(--border);
 }
 
 .single-exercise ul{
-  background-color: greenyellow;
+
   border: var(--border);
   width: 100%;
   height: 100%;
+  overflow-y: scroll; 
+  padding: 10px;
 }
 
 .exercise-details{
 display: grid;
 justify-items: left;
-gap: 10px;
+gap: 5px;
 }
 
 .exercise-details p{
@@ -351,6 +356,3 @@ gap: 10px;
   height:20px;
 }
 
-.comment p{
-
-}

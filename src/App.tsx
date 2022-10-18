@@ -15,8 +15,10 @@ function App() {
   const [userType, setUserType] = useState<String>("");
   const [exercises, setExercises] = useState([]);
   const [pupils, setPupils] = useState([]);
+  const [answers, setAnswers]= useState([])
 
   window.currentUser = currentUser;
+  window.answers= answers 
 
   let navigate = useNavigate();
 
@@ -82,8 +84,19 @@ function App() {
     }
   }, [currentUser]);
 
-  console.log(exercises);
-  console.log(pupils);
+
+useEffect(()=>{
+  if(currentUser){
+    if(userType==="pupil"){
+      fetch(`http://localhost:5000/answers/${currentUser.id}`) 
+      .then(resp=>resp.json())
+      .then(data=> {
+       setAnswers(data)
+      })
+    }
+  }
+}, [exercises])
+
 
   return (
     <div className="App">
@@ -104,7 +117,7 @@ function App() {
                   />
                 }
               />
-              <Route path="/solved-exercises" element={<SolvedExercises/>}/>
+              <Route path="/solved-exercises" element={<SolvedExercises answers={answers}/>}/>
             </>
           ) : (
             <>
