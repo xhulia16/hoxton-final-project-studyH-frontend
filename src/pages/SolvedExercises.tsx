@@ -12,6 +12,10 @@ export function SolvedExercises({ answers }) {
             <p>{item.exercise.exercise}</p>
             <h4>Correct answer:  {item.exercise.answer}</h4>
             <h4>Your answer: {item.answer}</h4>
+            {item.exercise.answer===item.answer? 
+            <h5 className="correct">Correct!</h5>:
+            <h5 className="wrong">Better luck next time!</h5>
+        }
             <input placeholder="ask a question"></input>
           </div>
           <ul>
