@@ -10,7 +10,7 @@ export function ClassMates({pupils}:Props) {
     <ul className="classmates-list">
       <p>Class</p>
       {pupils.map((item)=>(
-        <li>
+        <li key={item.name}>
         <img className="profile-pic" src={item.image}></img>
         <p>{item.name}</p>
       </li>

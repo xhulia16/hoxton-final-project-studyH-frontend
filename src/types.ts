@@ -19,10 +19,10 @@ export type Pupil = {
 }
 
 
-export type Exercise = {
+export type Exercises = {
     id: Number
     exercise: String
-    answer: String
+    answered: Boolean
     alternative1: String
     alternative2: String
     alternative3: String
@@ -31,3 +31,6 @@ export type Exercise = {
     teacher: Teacher
     teacherId: Number
 }
+
+
+

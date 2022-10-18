@@ -19,6 +19,7 @@ export function CreateExercise({currentUser}: Props){
                 alternative1: event.target.alternative1.value,
                 alternative2: event.target.alternative2.value,
                 alternative3: event.target.alternative3.value,
+                alternative4: event.target.alternative4.value,
               };
               console.log(newExercise);
 
@@ -33,19 +34,22 @@ export function CreateExercise({currentUser}: Props){
                   alternative1: newExercise.alternative1,
                   alternative2: newExercise.alternative2,
                   alternative3: newExercise.alternative3,
-                  alternative4: newExercise.answer,
+                  alternative4: newExercise.alternative4,
                   teacherId: currentUser.id,
                   classId: currentUser.classId,
                 }),
               });
+              event.target.reset()
             }}
           >
             <h2>Post a question</h2>
-            <textarea placeholder="question" name="question"></textarea>
-            <input placeholder="correct answer" name="answer"></input>
+            <p>Please enter the correct answer as an alternative</p>
+            <textarea placeholder="Enter Question" name="question"></textarea>
+            <input placeholder="Correct Answer" name="answer"></input>
             <input placeholder="alternative 1" name="alternative1"></input>
             <input placeholder="alternative 2" name="alternative2"></input>
             <input placeholder="alternative 3" name="alternative3"></input>
+            <input placeholder="alternative 4" name="alternative4"></input>
             <button>Submit</button>
           </form>
     )

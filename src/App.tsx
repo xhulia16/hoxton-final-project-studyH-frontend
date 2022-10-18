@@ -8,6 +8,7 @@ import { MainPage } from "./pages/MainPage";
 import { PageNotFound } from "./pages/PageNotFound";
 import { LogIn } from "./pages/LogInPage";
 import { Pupil, Teacher } from "./types";
+import { SingleExercise } from "./pages/SingleExercise";
 
 function App() {
   const [currentUser, setCurrentUser] = useState<Teacher | Pupil | null>(null);
@@ -23,6 +24,7 @@ function App() {
     setCurrentUser(data.user);
     setUserType(localStorage.user);
     localStorage.token = data.token;
+ 
   }
 
   function logOutUser() {
@@ -85,24 +87,34 @@ function App() {
       <main>
         <Header currentUser={currentUser} logOutUser={logOutUser} />
         <Routes>
-          <Route index element={<Navigate to="/home" />} />
-          <Route
-            path="/home"
-            element={
-              <MainPage
-                userType={userType}
-                currentUser={currentUser}
-                exercises={exercises}
+          {currentUser ? (
+            <>
+              <Route index element={<Navigate to="/home" />} />
+              <Route
+                path="/home"
+                element={
+                  <MainPage
+                    userType={userType}
+                    currentUser={currentUser}
+                    exercises={exercises}
+                    setExercises={setExercises}
+                  />
+                }
               />
-            }
-          />
-          <Route path="/log-in" element={<LogIn logInUser={logInUser} />} />
+              <Route path="exercise/:itemId" element={<SingleExercise/>}/>
+            </>
+          ) : (
+            <>
+              <Route index element={<Navigate to="/log-in" />} />
+            <Route path="/log-in" element={<LogIn logInUser={logInUser} />} />
+            </>
+          )}
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         {currentUser ? (
           <>
             <Ranking />
-            <ClassMates pupils={pupils}/>
+            <ClassMates pupils={pupils} />
           </>
         ) : null}
       </main>
