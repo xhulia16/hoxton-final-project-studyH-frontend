@@ -31,7 +31,11 @@ export function SolvedExercises({ answers }) {
           </ul>
         </div>
       ))}
-      <h2>You haven't answered any questions yet...</h2>
+      {answers.length===0? 
+      <h2>You haven't answered any questions yet...</h2>:
+      null
+      }
+      
     </section>
   );
 }

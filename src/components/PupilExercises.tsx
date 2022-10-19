@@ -29,7 +29,7 @@ export function PupilExercises({ exercises, currentUser, setExercises }) {
               body: JSON.stringify({
                 answer: event.target.name.value,
                 pupilId: currentUser.id,
-                exerciseId: item.id,
+                exerciseId: item.id, 
               }),
             })
               .then((resp) => resp.json())

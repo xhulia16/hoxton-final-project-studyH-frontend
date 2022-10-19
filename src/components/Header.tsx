@@ -9,6 +9,10 @@ export function Header({currentUser, logOutUser}){
           </Link>
           <ul>
             {currentUser? <>
+              <li>
+              <img className="profile-pic" src={currentUser.image}/>
+              </li>
+              <li>{currentUser.name}</li>
             <Link to="/solved-exercises">
               <li><button>See Answers</button></li>
               </Link>

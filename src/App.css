@@ -20,7 +20,7 @@ main {
     "header header header header"
     "main main ranking classmates";
   grid-template-rows: 10%;
-  grid-template-columns: 30% 35% 20% 20%;
+  grid-template-columns: 30% 30% 25% 20%;
   overflow: hidden;
 }
 
@@ -35,6 +35,11 @@ header {
   border-bottom: var(--border);
 }
 
+header li{
+  display: grid;
+  align-items: center;
+}
+
 header h3{
   font-size: 28px;
 }
@@ -42,7 +47,18 @@ header h3{
 header ul {
   display: grid;
   grid-auto-flow: column;
-  gap: 20px;
+  gap: 10px;
+  align-items: center;
+}
+
+header button{
+  background-color: white;
+  font-size: 14px;
+  border: var(--border);
+}
+
+header button:hover{
+  background-color: rgb(237, 243, 236);
 }
 
 .exercises-section {
@@ -59,7 +75,6 @@ header ul {
 .ranking-section {
   grid-area: ranking;
   display: grid;
-
   justify-content: center;
   align-content: flex-start;
   gap: 40px;
@@ -69,9 +84,21 @@ header ul {
 
 .ranking-section ul {
   background-color: var(--search-color);
-  width: 200px;
+  width: 280px;
   border-radius: 7px;
-  padding: 5px;
+  padding: 12px;
+}
+
+.ranking_pupil-details{
+display: grid;
+grid-auto-flow: column;
+justify-content: left;
+gap:5px;
+align-items: center;
+}
+
+.score{
+  color:rgb(0, 170, 0);
 }
 
 .ranking-section h3 {
@@ -84,13 +111,18 @@ header ul {
   display: grid;
   grid-auto-flow: column;
   align-items: center;
-  justify-content: left;
+  justify-content: space-between;
   gap: 5px;
   padding-bottom: 5px;
 }
 
 .ranking {
   font-size: 20px;
+}
+
+.current-pupil_score{
+  display: grid;
+  gap: 15px;
 }
 
 .classmates-list {
@@ -103,6 +135,7 @@ header ul {
   justify-content: left;
   align-content: baseline;
   height: 100%;
+  padding-right: 20px;
 }
 
 
@@ -116,7 +149,11 @@ header ul {
   align-items: center;
   gap: 5px;
   font-size: 15px;
+  border-top: var(--border);
+  border-bottom: var(--border);
+  width: 200px;
 }
+
 
 .search {
   height: 32px;
@@ -205,11 +242,6 @@ textarea{
   height: 30px;
   border-radius: 50%;
   object-fit: cover;
-}
-
-.classmates-list li {
-  border-top: var(--border);
-  width: 200px;
 }
 
 ::-webkit-scrollbar {

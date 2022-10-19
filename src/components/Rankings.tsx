@@ -1,34 +1,29 @@
-export function Ranking() {
+export function Ranking({ rankings, currentUser, userType}) {
+  let rank = 0;
   return (
     <section className="ranking-section">
       <input className="search" placeholder="Search Question"></input>
       <ul>
         <h3>Highest Scores</h3>
-        <li className="pupil-rank">
-          <p className="ranking">#1</p>
-          <img
-            className="profile-pic"
-            src="https://twt-thumbs.washtimes.com/media/image/2020/08/17/tv_disney_channel_bisexual_73750_c34-0-1886-1080_s885x516.jpg?deb7d5ab31b4d71690149fe98c14a0bbc2f9bcee"
-          ></img>
-          <p>Classmate Name</p>
-        </li>
-        <li className="pupil-rank">
-          <p className="ranking">#2</p>
-          <img
-            className="profile-pic"
-            src="https://twt-thumbs.washtimes.com/media/image/2020/08/17/tv_disney_channel_bisexual_73750_c34-0-1886-1080_s885x516.jpg?deb7d5ab31b4d71690149fe98c14a0bbc2f9bcee"
-          ></img>
-          <p>Classmate Name</p>
-        </li>
-        <li className="pupil-rank">
-          <p className="ranking">#3</p>
-          <img
-            className="profile-pic"
-            src="https://twt-thumbs.washtimes.com/media/image/2020/08/17/tv_disney_channel_bisexual_73750_c34-0-1886-1080_s885x516.jpg?deb7d5ab31b4d71690149fe98c14a0bbc2f9bcee"
-          ></img>
-          <p>Classmate Name</p>
-        </li>
+        {rankings.map((item) => (
+          <li className="pupil-rank">
+            <div className="ranking_pupil-details">
+            <p className="ranking">#{(rank = rank + 1)}</p>
+            <img className="profile-pic" src={item.image}></img>
+            <p>{item.name}</p>
+            </div>
+            <p className="score">Points: {item.score}</p>
+          </li>
+        ))}
       </ul>
+      {userType==="pupil"?
+      <div className="current-pupil_score">
+      <p>Hello 👋 {currentUser.name}</p>
+      <h4>This is your current score: {currentUser.score} points</h4>
+    </div>:
+    null
+    }
+      
     </section>
   );
 }

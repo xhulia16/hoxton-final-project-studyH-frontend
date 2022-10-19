@@ -15,7 +15,8 @@ function App() {
   const [userType, setUserType] = useState<String>("");
   const [exercises, setExercises] = useState([]);
   const [pupils, setPupils] = useState([]);
-  const [answers, setAnswers]= useState([])
+  const [answers, setAnswers]= useState([]);
+  const[rankings, setRankings]=useState([])
 
   window.exercises = exercises;
   window.answers= answers 
@@ -94,6 +95,12 @@ useEffect(()=>{
       .then(data=> {
        setAnswers(data)
       })
+      fetch(`http://localhost:5000/scores-students/${currentUser.classId}`)
+      .then(resp=>resp.json())
+      .then(data=>{
+        const {pupils}= data
+        setRankings(pupils)
+      })
     }
   }
 }, [exercises])
@@ -130,7 +137,7 @@ useEffect(()=>{
         </Routes>
         {currentUser ? (
           <>
-            <Ranking />
+            <Ranking rankings={rankings} currentUser={currentUser} userType={userType}/>
             <ClassMates pupils={pupils} />
           </>
         ) : null}
