@@ -1,4 +1,4 @@
-export function Ranking({ rankings, currentUser, userType}) {
+export function Ranking({ rankings, userType, currentUser, pupilRanking}) {
   let rank = 0;
   return (
     <section className="ranking-section">
@@ -18,8 +18,8 @@ export function Ranking({ rankings, currentUser, userType}) {
       </ul>
       {userType==="pupil"?
       <div className="current-pupil_score">
-      <p>Hello 👋 {currentUser.name}</p>
-      <h4>This is your current score: {currentUser.score} points</h4>
+      <p>Hello 👋{currentUser.name}</p>
+      <h4>This is your current score: {pupilRanking} points</h4>
     </div>:
     null
     }

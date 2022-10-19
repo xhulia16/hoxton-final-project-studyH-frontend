@@ -15,11 +15,14 @@ function App() {
   const [userType, setUserType] = useState<String>("");
   const [exercises, setExercises] = useState([]);
   const [pupils, setPupils] = useState([]);
-  const [answers, setAnswers]= useState([]);
-  const[rankings, setRankings]=useState([])
+  const [answers, setAnswers] = useState([]);
+  const [rankings, setRankings] = useState([]);
+  const [pupilRanking, setPupilRanking] = useState('');
+  const [errors, setErrors]=useState([])
 
   window.exercises = exercises;
-  window.answers= answers 
+  window.answers = answers;
+  window.pupilRanking=pupilRanking;
 
   let navigate = useNavigate();
 
@@ -27,8 +30,7 @@ function App() {
     setCurrentUser(data.user);
     setUserType(localStorage.user);
     localStorage.token = data.token;
-    navigate('/home')
- 
+    navigate("/home");
   }
 
   function logOutUser() {
@@ -73,38 +75,46 @@ function App() {
 
   useEffect(() => {
     if (currentUser) {
-      if(userType==="pupil"){
+      if (userType === "pupil") {
         fetch(`http://localhost:5000/class/${currentUser.id}`)
-        .then((resp) => resp.json())
-        .then((data) => {
-          const { exercises, pupils } = data;
-          setExercises(exercises);
-          setPupils(pupils);
-        });
+          .then((resp) => resp.json())
+          .then((data) => {
+            const { exercises, pupils } = data;
+            setExercises(exercises);
+            setPupils(pupils);
+          });
       }
-      
     }
   }, [currentUser]);
 
-
-useEffect(()=>{
-  if(currentUser){
-    if(userType==="pupil"){
-      fetch(`http://localhost:5000/answers/${currentUser.id}`) 
-      .then(resp=>resp.json())
-      .then(data=> {
-       setAnswers(data)
-      })
-      fetch(`http://localhost:5000/scores-students/${currentUser.classId}`)
-      .then(resp=>resp.json())
-      .then(data=>{
-        const {pupils}= data
-        setRankings(pupils)
-      })
+  useEffect(() => {
+    if (currentUser) {
+      if (userType === "pupil") {
+        fetch(`http://localhost:5000/answers/${currentUser.id}`)
+          .then((resp) => resp.json())
+          .then((data) => {
+            setAnswers(data);
+          });
+        fetch(`http://localhost:5000/scores-students/${currentUser.classId}`)
+          .then((resp) => resp.json())
+          .then((data) => {
+            const { pupils } = data;
+            setRankings(pupils);
+          });
+      }
     }
-  }
-}, [exercises])
+  }, [exercises]);
 
+  useEffect(() => {
+    if (currentUser && userType === "pupil") {
+      fetch(`http://localhost:5000/pupil/score/${currentUser.id}`)
+        .then((resp) => resp.json())
+        .then((data) => {
+          const {score}=data
+          setPupilRanking(score)
+        });
+    }
+  }, [exercises]);
 
   return (
     <div className="App">
@@ -123,22 +133,31 @@ useEffect(()=>{
                     exercises={exercises}
                     setExercises={setExercises}
                     setRankings={setRankings}
+                    pupilRanking={pupilRanking}
                   />
                 }
               />
-              <Route path="/solved-exercises" element={<SolvedExercises answers={answers}/>}/>
+              <Route
+                path="/solved-exercises"
+                element={<SolvedExercises answers={answers} />}
+              />
             </>
           ) : (
             <>
               <Route index element={<Navigate to="/log-in" />} />
-            <Route path="/log-in" element={<LogIn logInUser={logInUser} />} />
+              <Route path="/log-in" element={<LogIn logInUser={logInUser} />} />
             </>
           )}
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         {currentUser ? (
           <>
-            <Ranking rankings={rankings} currentUser={currentUser} userType={userType}/>
+            <Ranking
+              rankings={rankings}
+              pupilRanking={pupilRanking}
+              userType={userType}
+              currentUser={currentUser}
+            />
             <ClassMates pupils={pupils} />
           </>
         ) : null}

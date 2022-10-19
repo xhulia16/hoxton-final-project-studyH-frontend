@@ -5,7 +5,13 @@ type Props = {
   exercises: Exercises;
 };
 
-export function PupilExercises({ exercises, currentUser, setExercises, setRankings}) {
+export function PupilExercises({
+  exercises,
+  currentUser,
+  setExercises,
+  setRankings,
+  pupilRanking,
+}) {
   const ref = useRef(null);
 
   if (exercises === null) {
@@ -29,30 +35,32 @@ export function PupilExercises({ exercises, currentUser, setExercises, setRankin
               body: JSON.stringify({
                 answer: event.target.name.value,
                 pupilId: currentUser.id,
-                exerciseId: item.id, 
+                exerciseId: item.id,
               }),
             })
               .then((resp) => resp.json())
               .then((data) => {
                 const { exercises } = data;
-                setExercises(exercises);})
-              .then(score=> {
+                setExercises(exercises);
+              })
+
+              .then((score) => {
                 fetch(`http://localhost:5000/pupil/${currentUser.id}`, {
                   method: "PATCH",
                   headers: {
                     "Content-Type": "Application/json",
                   },
                   body: JSON.stringify({
-                    score: currentUser.score + 1,
-                    exerciseId: item.id
-                  })
+                    score: pupilRanking + 1,
+                    exerciseId: item.id,
+                  }),
                 })
-                .then(resp=>resp.json())
-      .then(data=>{
-        const {pupils}= data
-        setRankings(pupils)
-      })
-              })
+                  .then((resp) => resp.json())
+                  .then((data) => {
+                    const { pupils } = data;
+                    setRankings(pupils);
+                  });
+              });
           }}
         >
           <div className="teacher-info">
