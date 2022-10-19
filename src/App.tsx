@@ -17,7 +17,7 @@ function App() {
   const [pupils, setPupils] = useState([]);
   const [answers, setAnswers]= useState([])
 
-  window.currentUser = currentUser;
+  window.exercises = exercises;
   window.answers= answers 
 
   let navigate = useNavigate();
@@ -26,6 +26,7 @@ function App() {
     setCurrentUser(data.user);
     setUserType(localStorage.user);
     localStorage.token = data.token;
+    navigate('/home')
  
   }
 

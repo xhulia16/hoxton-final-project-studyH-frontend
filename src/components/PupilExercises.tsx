@@ -35,8 +35,19 @@ export function PupilExercises({ exercises, currentUser, setExercises }) {
               .then((resp) => resp.json())
               .then((data) => {
                 const { exercises } = data;
-                setExercises(exercises);
-              });
+                setExercises(exercises);})
+              .then(score=> {
+                fetch(`http://localhost:5000/pupil/${currentUser.id}`, {
+                  method: "PATCH",
+                  headers: {
+                    "Content-Type": "Application/json",
+                  },
+                  body: JSON.stringify({
+                    score: currentUser.score + 1,
+                    exerciseId: item.id
+                  })
+                });
+              })
           }}
         >
           <div className="teacher-info">
