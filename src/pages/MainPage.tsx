@@ -7,17 +7,18 @@ type Props = {
   userType: String;
   currentUser: Teacher | Pupil | null;
   exercises: any;
-  setExercises:any
+  setExercises:any;
+  setRankings: any;
 };
 
-export function MainPage({ userType, currentUser, exercises, setExercises}: Props) {
+export function MainPage({ userType, currentUser, exercises, setExercises, setRankings}: Props) {
   return (
     <>
       <section className="exercises-section">
         {userType === "teacher" ? (
           <CreateExercise currentUser={currentUser} />
         ) : (
-          <PupilExercises setExercises={setExercises} currentUser={currentUser} exercises={exercises} />
+          <PupilExercises setRankings={setRankings} setExercises={setExercises} currentUser={currentUser} exercises={exercises} />
         )}
         <h3>No more exercises to solve yet...</h3>
       </section>

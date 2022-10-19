@@ -122,6 +122,7 @@ useEffect(()=>{
                     currentUser={currentUser}
                     exercises={exercises}
                     setExercises={setExercises}
+                    setRankings={setRankings}
                   />
                 }
               />

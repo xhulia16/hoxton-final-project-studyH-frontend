@@ -5,7 +5,7 @@ type Props = {
   exercises: Exercises;
 };
 
-export function PupilExercises({ exercises, currentUser, setExercises }) {
+export function PupilExercises({ exercises, currentUser, setExercises, setRankings}) {
   const ref = useRef(null);
 
   if (exercises === null) {
@@ -46,7 +46,12 @@ export function PupilExercises({ exercises, currentUser, setExercises }) {
                     score: currentUser.score + 1,
                     exerciseId: item.id
                   })
-                });
+                })
+                .then(resp=>resp.json())
+      .then(data=>{
+        const {pupils}= data
+        setRankings(pupils)
+      })
               })
           }}
         >
