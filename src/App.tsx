@@ -151,7 +151,12 @@ function App() {
               />
               <Route
                 path="/solved-exercises"
-                element={<SolvedExercises setAnswers={setAnswers} currentUser={currentUser} answers={answers} />}
+                element={<SolvedExercises 
+                  setAnswers={setAnswers} 
+                  currentUser={currentUser} 
+                  answers={answers} 
+                  userType={userType}
+                  />}
               />
             </>
           ) : (
