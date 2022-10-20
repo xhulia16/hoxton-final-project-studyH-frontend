@@ -3,19 +3,15 @@ export function SolvedExercises({ answers }) {
     <section className="solved-exercises">
       <h2>Solved Exercises:</h2>
       {answers.reverse().map((item) => (
-        <div className="single-exercise">
+        <div key={item.id} className="single-exercise">
           <div className="exercise-details">
-            <div className="teacher-info">
+            <div className="teacher-info  answers" >
               <img src={item.exercise.teacher.image} className="profile-pic"></img>
-              <h3>{item.exercise.teacher.name}</h3>
+              <p>{item.exercise.teacher.name}</p>
             </div>
-            <p>{item.exercise.exercise}</p>
-            <h4>Correct answer:  {item.exercise.answer}</h4>
-            <h4>Your answer: {item.answer}</h4>
-            {item.exercise.answer===item.answer? 
-            <h5 className="correct">Correct!</h5>:
-            <h5 className="wrong">Better luck next time!</h5>
-        }
+            <h4>{item.exercise.exercise}</h4>
+            <p className="correct">Correct answer:  {item.exercise.answer}</p>
+            <p className={item.exercise.answer===item.answer? "correct": "wrong"}>Your answer: {item.answer}</p>
             <input placeholder="ask a question"></input>
           </div>
           <ul>

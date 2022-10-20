@@ -61,6 +61,7 @@ export function LogIn({logInUser}) {
               name="answer"
               value="teacher"
               className="custom"
+              required
             ></input>
             <span>Teacher</span>
           </label>
