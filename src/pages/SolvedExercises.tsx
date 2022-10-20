@@ -66,5 +66,4 @@ export function SolvedExercises({ answers, currentUser, setAnswers }) {
     </section>
   );
 }
-//fetching all the exercises in the answer section.
-// getting the answer from user
+
