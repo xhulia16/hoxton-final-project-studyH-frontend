@@ -22,6 +22,7 @@ export function PupilExercises({
     <>
       {exercises.reverse().map((item) => (
         <form
+          key={item.id}
           className="question"
           onSubmit={(event) => {
             event.preventDefault();
@@ -62,12 +63,14 @@ export function PupilExercises({
                   });
               });
           }}
+        
         >
           <div className="teacher-info">
             <img className="profile-pic" src={item.teacher.image}></img>
             <h4>{item.teacher.name}</h4>
           </div>
           <Exercise
+          item={item}
             question={item.exercise}
             options={[
               item.alternative1,
@@ -77,7 +80,13 @@ export function PupilExercises({
             ]}
             name="name"
           />
-          <button type="submit">Submit</button>
+          <button
+            disabled={true}
+            id={item.alternative1.toString()}
+            type="submit"
+          >
+            Submit
+          </button>
         </form>
       ))}
     </>

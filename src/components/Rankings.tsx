@@ -6,7 +6,7 @@ export function Ranking({ rankings, userType, currentUser, pupilRanking}) {
       <ul>
         <h3>Highest Scores</h3>
         {rankings.map((item) => (
-          <li className="pupil-rank">
+          <li key={rank} className="pupil-rank">
             <div className="ranking_pupil-details">
             <p className="ranking">#{(rank = rank + 1)}</p>
             <img className="profile-pic" src={item.image}></img>
