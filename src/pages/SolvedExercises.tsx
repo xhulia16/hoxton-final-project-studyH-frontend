@@ -3,6 +3,7 @@ export function SolvedExercises({
   currentUser,
   setAnswers,
   userType,
+  exercises,
 }) {
   return (
     <section className="solved-exercises">
@@ -75,11 +76,30 @@ export function SolvedExercises({
             <h2>You haven't answered any questions yet...</h2>
           ) : null}
         </>
-      ) : 
-      <>
-      <h2>Teacher statistics here</h2>
-      </>
-      }
+      ) : (
+        <>
+          <h2>Teacher statistics here</h2>
+          <ul className="exercises_container">
+            {exercises.reverse().map((item) => (
+              <li className="single-exercise_answer">
+                <h3>
+                  {item.exercise} ({item.answer})
+                </h3>
+                {item.answers.map((answer) => (
+                  <div className="pupil-answers">
+                    <img
+                      src={answer.pupil.image}
+                      className="profile-pic "
+                    ></img>
+                    <p> ۪ ｡˚ ✧  {answer.pupil.name} answered:</p>
+                    <p className={item.answer===answer.answer? "correct": "wrong"}>{answer.answer}</p>
+                  </div>
+                ))}
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
     </section>
   );
 }

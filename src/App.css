@@ -54,11 +54,12 @@ header ul {
 header button{
   background-color: white;
   font-size: 14px;
-  border: var(--border);
+  border: 2px solid rgba(0, 0, 0, 0.308);
 }
 
 header button:hover{
-  background-color: rgb(237, 243, 236);
+  border: 2px outset var(--main-color);
+  background-color: white;
 }
 
 .exercises-section {
@@ -405,11 +406,13 @@ border-right: var(--border);
 }
 
 .correct{
-  color:rgb(52, 180, 52)
+  color:rgb(52, 180, 52);
+  font-weight: 600;
 }
 
 .wrong{
   color:rgb(155, 24, 24);
+  font-weight: 600;
 }
 
 .answers{
@@ -425,4 +428,36 @@ border-right: var(--border);
   width:20px;
  } 
 
+/* answers section for teacher */
 
+.exercise_answer-container{
+  background-color: blue;
+  display: grid;
+  grid-auto-flow: row;
+  gap:20px;
+}
+
+.exercises_container{
+
+  display: grid;
+  justify-content: center;
+  gap: 20px;
+  width: 60vw;
+}
+
+.single-exercise_answer{
+  width:40vw ;
+  border: var(--border);
+  display: grid;
+  justify-content: left;
+  gap:5px;
+  padding: 10px;
+}
+
+.pupil-answers{
+  display: grid;
+  justify-content: left;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 5px;
+}

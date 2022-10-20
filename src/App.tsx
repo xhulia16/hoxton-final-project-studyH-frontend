@@ -20,14 +20,14 @@ function App() {
   const [errors, setErrors]=useState([])
   const [counter, setCounter]=useState(0)
 
-//   window.currentUser=currentUser;
-//   window.userType=userType;
-//  window.exercises=exercises;
-//   window.answers = answers;
-//   window.pupils = pupils;
-//   window.pupilRanking=pupilRanking;
+  window.currentUser=currentUser;
+  window.userType=userType;
+ window.exercises=exercises;
+  window.answers = answers;
+  window.pupils = pupils;
+  window.pupilRanking=pupilRanking;
 
-  console.log(userType)
+  // console.log(userType)
 
   let navigate = useNavigate();
 
@@ -42,6 +42,7 @@ function App() {
     setCurrentUser(null);
     setUserType("");
     setExercises([]);
+    setAnswers([]);
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     navigate("/log-in");
@@ -156,6 +157,7 @@ function App() {
                   currentUser={currentUser} 
                   answers={answers} 
                   userType={userType}
+                  exercises={exercises}
                   />}
               />
             </>
