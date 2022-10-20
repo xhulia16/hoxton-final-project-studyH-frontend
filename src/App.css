@@ -337,12 +337,12 @@ a{
   display: grid;
   grid-auto-flow: column;
  background-color: white;
-  justify-items: center;
+  justify-items: left;
   align-items: center;
   width: 45vw;
   border: var(--border);
   padding: 20px;
-  height: 200px;
+  height: 300px;
 
 }
 
@@ -355,18 +355,31 @@ a{
 }
 
 .single-exercise ul{
-
-  border: var(--border);
-  width: 100%;
+  display: grid;
+  justify-content:left;
+  align-content: flex-start;
+ 
+  width: 50vw;
   height: 100%;
   overflow-y: scroll; 
   padding: 10px;
+  gap: 5px;
+  
+}
+
+.pupil-comment{
+  width: 150px;
+  text-align: left;
 }
 
 .exercise-details{
 display: grid;
+height:100%;
+width:45vh;
 justify-items: left;
 gap: 10px;
+border-right: var(--border);
+
 }
 
 .exercise-details p{
@@ -407,5 +420,6 @@ gap: 10px;
 .answers img{
   height:20px;
   width:20px;
- }
+ } 
+
 

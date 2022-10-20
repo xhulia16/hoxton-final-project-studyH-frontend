@@ -13,17 +13,19 @@ export function SolvedExercises({ answers }) {
             <p className="correct">Correct answer:  {item.exercise.answer}</p>
             <p className={item.exercise.answer===item.answer? "correct": "wrong"}>Your answer: {item.answer}</p>
             <input placeholder="ask a question"></input>
+            <button>Submit</button>
           </div>
           <ul>
-            <li>
+            <h3>Comments</h3>
+            {item.exercise.comments.reverse().map(comment=> (
+              <li key={item.id}>
               <div className="teacher-info comment">
-                <img className="profile-pic"></img>
-                <h4>teacher name</h4>
-                <p>comment here</p>
+                <img className="profile-pic" src={comment.pupil.image}></img>
+                <h4>{comment.pupil.name}</h4>
+                <p className="pupil-comment">{comment.comment}</p>
               </div>
             </li>
-            <li>list of comments</li>
-            <li>list of comments</li>
+            ))}
           </ul>
         </div>
       ))}

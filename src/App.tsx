@@ -20,7 +20,7 @@ function App() {
   const [errors, setErrors]=useState([])
   const [counter, setCounter]=useState(0)
 
-
+window.exercises=exercises;
   window.answers = answers;
   window.pupils = pupils;
   window.pupilRanking=pupilRanking;
