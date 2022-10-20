@@ -10,7 +10,9 @@ export function PupilExercises({
   currentUser,
   setExercises,
   pupilRanking,
-  setPupils
+  setPupils,
+  counter,
+  setCounter
 }) {
 
 
@@ -60,6 +62,7 @@ export function PupilExercises({
                   .then((data) => {
                     const { pupils } = data;
                     setPupils(pupils);
+                    setCounter(counter+1)
                   });
               });
           }}

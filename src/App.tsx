@@ -18,6 +18,7 @@ function App() {
   const [answers, setAnswers] = useState([]);
   const [pupilRanking, setPupilRanking] = useState('');
   const [errors, setErrors]=useState([])
+  const [counter, setCounter]=useState(0)
 
 
   window.answers = answers;
@@ -108,7 +109,7 @@ function App() {
           setPupilRanking(score)
         });
     }
-  }, [exercises]);
+  }, [exercises, counter]);
 
   return (
     <div className="App">
@@ -128,6 +129,8 @@ function App() {
                     setExercises={setExercises}
                     pupilRanking={pupilRanking}
                     setPupils={setPupils}
+                    setCounter={setCounter}
+                    counter={counter}
                   />
                 }
               />

@@ -12,7 +12,7 @@ type Props = {
   pupilRanking:any
 };
 
-export function MainPage({ userType, currentUser, exercises, setExercises, setPupils, pupilRanking}: Props) {
+export function MainPage({ userType, currentUser, exercises, setExercises, setPupils, pupilRanking, counter, setCounter}) {
   return (
     <>
       <section className="exercises-section">
@@ -25,6 +25,8 @@ export function MainPage({ userType, currentUser, exercises, setExercises, setPu
           currentUser={currentUser} 
           exercises={exercises} 
           pupilRanking={pupilRanking}
+          setCounter={setCounter}
+          counter={counter}
           />
         )}
         <h3>No more exercises to solve yet...</h3>
