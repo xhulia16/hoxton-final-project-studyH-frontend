@@ -19,6 +19,7 @@ export function MainPage({ userType, currentUser, exercises, setExercises, setPu
         {userType === "teacher" ? (
           <CreateExercise currentUser={currentUser} />
         ) : (
+          <>
           <PupilExercises 
           setPupils={setPupils}
           setExercises={setExercises} 
@@ -28,8 +29,10 @@ export function MainPage({ userType, currentUser, exercises, setExercises, setPu
           setCounter={setCounter}
           counter={counter}
           />
+          <h3>No more exercises to solve yet...</h3>
+          </>
         )}
-        <h3>No more exercises to solve yet...</h3>
+        
       </section>
     </>
   );

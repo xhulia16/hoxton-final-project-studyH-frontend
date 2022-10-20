@@ -20,11 +20,14 @@ function App() {
   const [errors, setErrors]=useState([])
   const [counter, setCounter]=useState(0)
 
-  window.currentUser=currentUser
- window.exercises=exercises;
-  window.answers = answers;
-  window.pupils = pupils;
-  window.pupilRanking=pupilRanking;
+//   window.currentUser=currentUser;
+//   window.userType=userType;
+//  window.exercises=exercises;
+//   window.answers = answers;
+//   window.pupils = pupils;
+//   window.pupilRanking=pupilRanking;
+
+  console.log(userType)
 
   let navigate = useNavigate();
 
@@ -37,6 +40,8 @@ function App() {
 
   function logOutUser() {
     setCurrentUser(null);
+    setUserType("");
+    setExercises([]);
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     navigate("/log-in");
@@ -86,8 +91,17 @@ function App() {
             setPupils(pupils);
           });
       }
+     if(userType==="teacher"){
+        fetch(`http://localhost:5000/class/teacher/${currentUser.id}`)
+        .then((resp) => resp.json())
+          .then((data) => {
+            const { exercises, pupils } = data;
+            setExercises(exercises);
+            setPupils(pupils);
+          });
+      }
     }
-  }, [currentUser]);
+  }, [currentUser, userType]);
 
   useEffect(() => {
     if (currentUser) {
