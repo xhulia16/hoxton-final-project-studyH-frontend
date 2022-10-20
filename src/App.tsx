@@ -16,12 +16,12 @@ function App() {
   const [exercises, setExercises] = useState([]);
   const [pupils, setPupils] = useState([]);
   const [answers, setAnswers] = useState([]);
-  const [rankings, setRankings] = useState([]);
   const [pupilRanking, setPupilRanking] = useState('');
   const [errors, setErrors]=useState([])
 
-  window.exercises = exercises;
+
   window.answers = answers;
+  window.pupils = pupils;
   window.pupilRanking=pupilRanking;
 
   let navigate = useNavigate();
@@ -95,12 +95,6 @@ function App() {
           .then((data) => {
             setAnswers(data);
           });
-        fetch(`http://localhost:5000/scores-students/${currentUser.classId}`)
-          .then((resp) => resp.json())
-          .then((data) => {
-            const { pupils } = data;
-            setRankings(pupils);
-          });
       }
     }
   }, [exercises]);
@@ -132,8 +126,8 @@ function App() {
                     currentUser={currentUser}
                     exercises={exercises}
                     setExercises={setExercises}
-                    setRankings={setRankings}
                     pupilRanking={pupilRanking}
+                    setPupils={setPupils}
                   />
                 }
               />
@@ -153,7 +147,7 @@ function App() {
         {currentUser ? (
           <>
             <Ranking
-              rankings={rankings}
+            pupils={pupils}
               pupilRanking={pupilRanking}
               userType={userType}
               currentUser={currentUser}

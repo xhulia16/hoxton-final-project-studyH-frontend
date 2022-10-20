@@ -1,11 +1,12 @@
-export function Ranking({ rankings, userType, currentUser, pupilRanking}) {
+export function Ranking({ pupils, userType, currentUser, pupilRanking}) {
+
   let rank = 0;
   return (
     <section className="ranking-section">
       <input className="search" placeholder="Search Question"></input>
       <ul>
         <h3>Highest Scores</h3>
-        {rankings.map((item) => (
+        {pupils.map((item) => (
           <li key={rank} className="pupil-rank">
             <div className="ranking_pupil-details">
             <p className="ranking">#{(rank = rank + 1)}</p>

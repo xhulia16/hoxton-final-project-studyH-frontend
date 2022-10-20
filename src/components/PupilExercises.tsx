@@ -9,10 +9,10 @@ export function PupilExercises({
   exercises,
   currentUser,
   setExercises,
-  setRankings,
   pupilRanking,
+  setPupils
 }) {
-  const ref = useRef(null);
+
 
   if (exercises === null) {
     return <h1>Loading...</h1>;
@@ -41,7 +41,7 @@ export function PupilExercises({
             })
               .then((resp) => resp.json())
               .then((data) => {
-                const { exercises } = data;
+                const { exercises, pupils } = data;
                 setExercises(exercises);
               })
 
@@ -59,7 +59,7 @@ export function PupilExercises({
                   .then((resp) => resp.json())
                   .then((data) => {
                     const { pupils } = data;
-                    setRankings(pupils);
+                    setPupils(pupils);
                   });
               });
           }}
