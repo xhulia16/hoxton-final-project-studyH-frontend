@@ -1,6 +1,5 @@
-export function LogIn({logInUser}) {
+export function LogIn({ logInUser }) {
   return (
-
     <div className="logIn-page">
       <form
         onSubmit={(event) => {
@@ -8,17 +7,17 @@ export function LogIn({logInUser}) {
 
           const user = {
             email: event.target.email.value,
-            password: event.target.password.value
+            password: event.target.password.value,
           };
           console.log(event.target.answer.value);
 
           if (event.target.answer.value === "teacher") {
-             fetch(`http://localhost:5000/sign-in/teacher`, {
+            fetch(`http://localhost:5000/sign-in/teacher`, {
               method: "POST",
               headers: {
                 "content-type": "application/json",
               },
-              body: JSON.stringify(user)
+              body: JSON.stringify(user),
             })
               .then((resp) => resp.json())
               .then((data) => {
@@ -27,16 +26,15 @@ export function LogIn({logInUser}) {
                 } else {
                   logInUser(data);
                 }
-            });
-            localStorage.user="teacher"
-        }
-    else{
-        fetch(`http://localhost:5000/sign-in/pupil`, {
+              });
+            localStorage.user = "teacher";
+          } else {
+            fetch(`http://localhost:5000/sign-in/pupil`, {
               method: "POST",
               headers: {
                 "content-type": "application/json",
               },
-              body: JSON.stringify(user)
+              body: JSON.stringify(user),
             })
               .then((resp) => resp.json())
               .then((data) => {
@@ -45,13 +43,12 @@ export function LogIn({logInUser}) {
                 } else {
                   logInUser(data);
                 }
-            });
-            localStorage.user="pupil"
-    }
-    }}
-
-    
-        className="pupil-logIn">
+              });
+            localStorage.user = "pupil";
+          }
+        }}
+        className="pupil-logIn"
+      >
         <h2 className="title">LOGIN FORM</h2>
         <div className="logIn-question">
           <p>Login as:</p>

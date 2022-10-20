@@ -136,7 +136,7 @@ window.exercises=exercises;
               />
               <Route
                 path="/solved-exercises"
-                element={<SolvedExercises answers={answers} />}
+                element={<SolvedExercises setAnswers={setAnswers} currentUser={currentUser} answers={answers} />}
               />
             </>
           ) : (
