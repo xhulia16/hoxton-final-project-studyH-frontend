@@ -163,7 +163,10 @@ function App() {
                   pupils={pupils}
                   />}
               />
-              <Route path="/dm/:itemId" element={<Dm setDmCounter={setDmCounter} dmCounter={dmCounter} currentUser={currentUser}/>} />
+              {userType==="pupil"? 
+            <Route path="/dm/:itemId" element={<Dm setDmCounter={setDmCounter} dmCounter={dmCounter} currentUser={currentUser}/>} />
+            : null
+            }
             </>
           ) : (
             <>
@@ -182,7 +185,7 @@ function App() {
               userType={userType}
               currentUser={currentUser}
             />
-            <ClassMates currentUser={currentUser} dmCounter={dmCounter} setDmCounter={setDmCounter} />
+            <ClassMates userType={userType} currentUser={currentUser} dmCounter={dmCounter} setDmCounter={setDmCounter} />
           </>
         ) : null}
       </main>

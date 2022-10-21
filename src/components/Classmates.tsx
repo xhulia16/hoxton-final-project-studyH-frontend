@@ -7,16 +7,20 @@ type Pupil = {
 type Props = {
   pupils: Pupil[];
 };
-export function ClassMates({ currentUser, dmCounter, setDmCounter }) {
+export function ClassMates({ currentUser, dmCounter, setDmCounter, userType}) {
   const navigate=useNavigate()
   return (
     <ul className="classmates-list">
       <p>Class</p>
       {currentUser.class.pupils.map((item) => (
        
-        <li className="class-pupils" onClick={()=>{
-          navigate(`/dm/${item.id}`)
-          setDmCounter(dmCounter+1)
+        <li className="class-pupils" 
+        onClick={()=>{
+          if(userType==="pupil"){
+            navigate(`/dm/${item.id}`)
+            setDmCounter(dmCounter+1)
+          }
+          
         }}key={item.name}>
           <img className="profile-pic" src={item.image}></img>
           <p>{item.name}</p>
