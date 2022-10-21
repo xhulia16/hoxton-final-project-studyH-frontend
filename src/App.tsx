@@ -20,6 +20,7 @@ function App() {
   const [pupilRanking, setPupilRanking] = useState('');
   const [errors, setErrors]=useState([])
   const [counter, setCounter]=useState(0)
+  const [dmCounter, setDmCounter]=useState(0)
 
   window.currentUser=currentUser;
   window.userType=userType;
@@ -162,7 +163,7 @@ function App() {
                   pupils={pupils}
                   />}
               />
-              <Route path="/dm" element={<Dm/>} />
+              <Route path="/dm/:itemId" element={<Dm dmCounter={dmCounter} currentUser={currentUser}/>} />
             </>
           ) : (
             <>
@@ -181,7 +182,7 @@ function App() {
               userType={userType}
               currentUser={currentUser}
             />
-            <ClassMates currentUser={currentUser} />
+            <ClassMates currentUser={currentUser} dmCounter={dmCounter} setDmCounter={setDmCounter} />
           </>
         ) : null}
       </main>
