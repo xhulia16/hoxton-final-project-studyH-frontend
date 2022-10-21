@@ -4,7 +4,7 @@ type Props={
   currentUser: Pupil| Teacher | null
 }
 
-export function CreateExercise({currentUser}: Props){
+export function CreateExercise({currentUser, setExercises, setPupils }){
   if (currentUser === null) {
     return <h1>Loading...</h1>;
   }
@@ -38,7 +38,8 @@ export function CreateExercise({currentUser}: Props){
                   teacherId: currentUser.id,
                   classId: currentUser.classId,
                 }),
-              });
+              })
+              
               event.target.reset()
             }}
           >
