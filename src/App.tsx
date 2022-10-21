@@ -163,7 +163,7 @@ function App() {
                   pupils={pupils}
                   />}
               />
-              <Route path="/dm/:itemId" element={<Dm dmCounter={dmCounter} currentUser={currentUser}/>} />
+              <Route path="/dm/:itemId" element={<Dm setDmCounter={setDmCounter} dmCounter={dmCounter} currentUser={currentUser}/>} />
             </>
           ) : (
             <>
