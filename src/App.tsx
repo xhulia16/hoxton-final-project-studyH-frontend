@@ -9,6 +9,7 @@ import { PageNotFound } from "./pages/PageNotFound";
 import { LogIn } from "./pages/LogInPage";
 import { Pupil, Teacher } from "./types";
 import { SolvedExercises } from "./pages/SolvedExercises";
+import { Dm } from "./pages/Dm";
 
 function App() {
   const [currentUser, setCurrentUser] = useState<Teacher | Pupil | null>(null);
@@ -161,14 +162,16 @@ function App() {
                   pupils={pupils}
                   />}
               />
+              <Route path="/dm" element={<Dm/>} />
             </>
           ) : (
             <>
               <Route index element={<Navigate to="/log-in" />} />
               <Route path="/log-in" element={<LogIn logInUser={logInUser} />} />
+              <Route path="*" element={<PageNotFound />} />
             </>
           )}
-          <Route path="*" element={<PageNotFound />} />
+         
         </Routes>
         {currentUser ? (
           <>

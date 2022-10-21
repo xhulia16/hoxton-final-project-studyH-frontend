@@ -17,10 +17,10 @@ export function SolvedExercises({
   pupils
 }) {
   return (
-    <section className="solved-exercises">
-      <h2>Solved Exercises:</h2>
+    <section className="solved-exercises"> 
       {userType === "pupil" ? (
         <>
+        <h2>Solved Exercises:</h2>
           {answers.reverse().map((item) => (
             <div key={item.id} className="single-exercise">
               <div className="exercise-details">
@@ -89,7 +89,7 @@ export function SolvedExercises({
         </>
       ) : (
         <>
-          
+          <h2>Engagement:</h2>
           <div>
             <BarChart width={690} height={180} barGap={10} barSize={30} data={pupils}>
               <CartesianGrid strokeDasharray="3 3" />

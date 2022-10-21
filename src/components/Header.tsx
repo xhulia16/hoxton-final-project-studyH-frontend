@@ -16,7 +16,9 @@ export function Header({currentUser, logOutUser}){
             <Link to="/solved-exercises">
               <li><button>See Answers</button></li>
               </Link>
+              <Link to="/dm">
               <li><button>Dm</button></li>
+              </Link>
               <li><button onClick={logOutUser}>LogOut</button></li>
             </>
              :
