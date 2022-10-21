@@ -17,7 +17,7 @@ export function MainPage({ userType, currentUser, exercises, setExercises, setPu
     <>
       <section className="exercises-section">
         {userType === "teacher" ? (
-          <CreateExercise currentUser={currentUser} />
+          <CreateExercise currentUser={currentUser} setExercises={setExercises} setPupils={setPupils} />
         ) : (
           <>
           <PupilExercises 
