@@ -158,6 +158,7 @@ function App() {
                   answers={answers} 
                   userType={userType}
                   exercises={exercises}
+                  pupils={pupils}
                   />}
               />
             </>

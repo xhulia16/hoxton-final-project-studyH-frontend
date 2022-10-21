@@ -1,9 +1,20 @@
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  Legend,
+} from "recharts";
+
 export function SolvedExercises({
   answers,
   currentUser,
   setAnswers,
   userType,
   exercises,
+  pupils
 }) {
   return (
     <section className="solved-exercises">
@@ -78,7 +89,17 @@ export function SolvedExercises({
         </>
       ) : (
         <>
-          <h2>Teacher statistics here</h2>
+          
+          <div>
+            <BarChart width={690} height={180} barGap={10} barSize={30} data={pupils}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name"  />
+              <YAxis />
+              <Tooltip wrapperStyle={{ width: 100, backgroundColor: '#ccc' }} />
+              <Legend />
+              <Bar dataKey="answers.length" fill="rgb(52, 180, 52)" name="questions answered" label />
+            </BarChart>
+          </div>
           <ul className="exercises_container">
             {exercises.reverse().map((item) => (
               <li className="single-exercise_answer">
@@ -91,8 +112,14 @@ export function SolvedExercises({
                       src={answer.pupil.image}
                       className="profile-pic "
                     ></img>
-                    <p> ۪ ｡˚ ✧  {answer.pupil.name} answered:</p>
-                    <p className={item.answer===answer.answer? "correct": "wrong"}>{answer.answer}</p>
+                    <p> ۪ ｡˚ ✧ {answer.pupil.name} answered:</p>
+                    <p
+                      className={
+                        item.answer === answer.answer ? "correct" : "wrong"
+                      }
+                    >
+                      {answer.answer}
+                    </p>
                   </div>
                 ))}
               </li>

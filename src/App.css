@@ -327,7 +327,7 @@ a{
 
   width: 60vw;
   display: grid;
-  justify-content: center;
+  justify-items: center;
   align-content: flex-start;
   gap: 30px;
   overflow-y: scroll;
@@ -431,18 +431,18 @@ border-right: var(--border);
 /* answers section for teacher */
 
 .exercise_answer-container{
-  background-color: blue;
   display: grid;
   grid-auto-flow: row;
   gap:20px;
 }
 
 .exercises_container{
-
   display: grid;
   justify-content: center;
   gap: 20px;
   width: 60vw;
+  overflow-y: scroll;
+  height: fit-content;
 }
 
 .single-exercise_answer{
