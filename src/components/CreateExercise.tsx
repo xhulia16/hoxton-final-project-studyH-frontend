@@ -43,6 +43,7 @@ export function CreateExercise({currentUser, setExercises, setPupils }){
               event.target.reset()
             }}
           >
+
             <h2>Post a question</h2>
             <p>Please enter the correct answer as an alternative</p>
             <textarea placeholder="Enter Question" name="question"></textarea>
